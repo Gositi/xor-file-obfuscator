@@ -11,11 +11,15 @@ int main (int argc, char* argv[]) {
 	FILE* r = fopen (argv[1], "rb");
 	FILE* w = fopen (argv[2], "wb");
 	
+	//Obfuscate files
 	int byte;
 	int xor = 0xaa;
 	while ((byte = fgetc (r)) != EOF) {
 		fputc (byte ^ xor, w);
 	}
+
+	fclose (r);
+	fclose (w);
 
 	return 0;
 }
